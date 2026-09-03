@@ -55,7 +55,7 @@ export default function Home() {
         onOpenOSModal={handleOpenOSModal}
       />
 
-      {/* 2. Medora1 OS (Tesla FSD Section Match) */}
+      {/* 2. MIHC (Tesla FSD Section Match) */}
       <MedoraOSSection
         onOpenOSModal={handleOpenOSModal}
         onOpenSchedule={handleOpenSchedule}

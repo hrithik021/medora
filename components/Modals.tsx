@@ -44,32 +44,37 @@ function generateSmartMedoraResponse(rawQuery: string): string {
 
   // 0. Greetings — warm but immediately redirect to Medora1
   if (greetingPatterns.some((g) => query === g || query.startsWith(g + " ") || query.startsWith(g + "!"))) {
-    return `Hello and welcome to Medora1 Intelligence.\n\nI'm here to answer any questions about Medora1's secondary care hospital network, Medora1 OS, our Dubai Investment Park flagship in partnership with Apollo Hospitals, our founders, or our stakeholder model.\n\nWhat would you like to know?`;
+    return `Hello and welcome to Medora1 Intelligence.\n\nI'm here to answer any questions about Medora1's secondary care hospital network, MIHC, our Dubai Investment Park flagship in partnership with Apollo Hospitals, our founders, or our stakeholder model.\n\nWhat would you like to know?`;
   }
 
   // 1. Hard block — completely unrelated topics
   const isHardBlocked = hardBlockKeywords.some((kw) => query.includes(kw));
   if (isHardBlocked && !query.includes("medora") && !query.includes("hospital") && !query.includes("health")) {
-    return `I'm Medora1 Intelligence — dedicated exclusively to Medora1's UAE secondary care model, Medora1 OS, and our Dubai Investment Park hospital network.\n\nI'm not designed to answer general topics outside our healthcare mission. I'd be happy to tell you about:\n• How Medora1 delivers transparent, predictably-priced secondary care\n• Our technology platform, Medora1 OS\n• The Apollo Hospitals partnership at Dubai Investment Park\n• Our founders' track records`;
+    return `I'm Medora1 Intelligence — dedicated exclusively to Medora1's UAE secondary care model, MIHC, and our Dubai Investment Park hospital network.\n\nI'm not designed to answer general topics outside our healthcare mission. I'd be happy to tell you about:\n• How Medora1 delivers transparent, predictably-priced secondary care\n• Our technology platform, MIHC\n• The Apollo Hospitals partnership at Dubai Investment Park\n• Our founders' track records`;
   }
 
   // 2. Tech/car brand comparisons — intelligent redirect, never a hard block
   const matchedBrand = techBrands.find((b) => query.includes(b));
   if (matchedBrand) {
     const brandCapitalized = matchedBrand.charAt(0).toUpperCase() + matchedBrand.slice(1);
-    return `If ${brandCapitalized} is the reference point — Medora1 is building the same category-defining operation for UAE secondary healthcare.\n\nLike ${brandCapitalized}'s software-defined approach, Medora1 runs hospitals through a proprietary operating system — Medora1 OS — that replaces disconnected, manual administration with real-time clinical intelligence:\n• Patient flow routed in < 12 minutes\n• 100% upfront, pre-agreed billing — no surprise invoices\n• Consistent 29% operating margins\n• Learnings from the 1st hospital automatically applied to the 10th\n\nOur proving ground is the DIP Flagship, built with Apollo Hospitals in Dubai Investment Park. From there, the model scales — emirate by emirate, country by country.\n\nWould you like to know more about Medora1 OS, our stakeholder model, or the DIP facility?`;
+    return `If ${brandCapitalized} is the reference point — Medora1 is building the same category-defining operation for UAE secondary healthcare.\n\nLike ${brandCapitalized}'s software-defined approach, Medora1 runs hospitals through a proprietary operating system — MIHC — that replaces disconnected, manual administration with real-time clinical intelligence:\n• Patient flow routed in < 12 minutes\n• 100% upfront, pre-agreed billing — no surprise invoices\n• Consistent 29% operating margins\n• Learnings from the 1st hospital automatically applied to the 10th\n\nOur proving ground is the DIP Flagship, built with Apollo Hospitals in Dubai Investment Park. From there, the model scales — emirate by emirate, country by country.\n\nWould you like to know more about MIHC, our stakeholder model, or the DIP facility?`;
   }
 
   // 3. Random personal names — polite redirect
   const isRandomName = randomPersonNames.some((n) => query === n || query === `who is ${n}` || query.startsWith(n + " ") || (query.length <= n.length + 2 && query.includes(n)));
   if (isRandomName) {
-    return `I'm Medora1 Intelligence — I answer questions specifically about Medora1's secondary care model, our Dubai Investment Park hospital, Medora1 OS, and our founding team.\n\nIf you'd like to know about our founders, try asking: "Who are the Medora1 founders?" or "Tell me about Dr. Raza Siddiqui."`;
+    return `I'm Medora1 Intelligence — I answer questions specifically about Medora1's secondary care model, our Dubai Investment Park hospital, MIHC, and our founding team.\n\nIf you'd like to know about our founders, try asking: "Who are the Medora1 founders?" or "Tell me about Dr. Raza Siddiqui."`;
+  }
+
+  // 3.5 Specific query for RAK / Other Emirates hospital presence
+  if (query.includes("rak") || query.includes("ras al khaimah")) {
+    return `Medora1's secondary-care hospital network is focused strictly on Dubai and Abu Dhabi. Our flagship hospital is located in Dubai Investment Park (DIP) in clinical partnership with Apollo Hospitals, with secondary-care expansion centers in Abu Dhabi. We do not have hospital facilities in Ras Al Khaimah (RAK).`;
   }
 
   // 4. Geographical / Other Country Routing
   const matchedCountry = worldCountries.find((c) => query.includes(c));
   if (matchedCountry) {
-    return `Medora1 is headquartered and operationally anchored in the United Arab Emirates, with our flagship secondary-care hospital in Dubai Investment Park (DIP), in clinical alliance with Apollo Hospitals.\n\nWhile our current facility footprint is purpose-built for the UAE's insured middle-income population across Dubai, Abu Dhabi, Sharjah, and the Northern Emirates, our founding team carries deep international reach:\n• Dr. Raza Siddiqui has directed hospital networks across 11 countries with 650+ clinical professionals.\n• Bidhann Chaudary delivered hospital infrastructure under the UAE Presidential Program across 5 countries.\n• Apollo Hospitals brings world-class clinical protocols and cross-border healthcare expertise.\n\nMedora1 OS is engineered so every operational playbook proven in Dubai scales seamlessly to the wider GCC — and beyond — in subsequent phases.`;
+    return `Medora1 is headquartered and operationally anchored in the United Arab Emirates, with our flagship secondary-care hospital in Dubai Investment Park (DIP), in clinical alliance with Apollo Hospitals.\n\nWhile our current facility footprint is purpose-built for the UAE's insured middle-income population across Dubai and Abu Dhabi, our founding team carries deep international reach:\n• Dr. Raza Siddiqui has directed hospital networks across 11 countries with 650+ clinical professionals.\n• Bidhann Chaudary delivered hospital infrastructure under the UAE Presidential Program across 5 countries.\n• Apollo Hospitals brings world-class clinical protocols and cross-border healthcare expertise.\n\nMIHC is engineered so every operational playbook proven in Dubai scales seamlessly to Abu Dhabi and the wider GCC in subsequent phases.`;
   }
 
   // 5. About Medora1 / General Overview
@@ -83,7 +88,7 @@ function generateSmartMedoraResponse(rawQuery: string): string {
     query.includes("introduction") ||
     (query.includes("healthcare") && query.length < 30)
   ) {
-    return `Medora1 is a next-generation secondary-care hospital network in the United Arab Emirates.\n\nOur founding thesis: "Premium is not expensive. They only sound alike."\n\nWe build hospitals for the UAE's insured middle-income population — people who fall between overcrowded government facilities and overpriced private hospitals. Medora1 offers premium secondary care at predictable, pre-agreed prices.\n\nFlagship: Dubai Investment Park (DIP) — built with Apollo Hospitals. 120+ beds, 6 surgical theaters, JCI-accredited protocols.\n\nEngine: Medora1 OS — our proprietary hospital operating platform that delivers < 12 minute triage, 100% upfront billing, and 29% operating margins.\n\nFounders: Dr. Raza Siddiqui, Bidhann Chaudary, and Abhinav Sharma — three executives with combined experience across 11 countries, UAE sovereign mandates, and a 14x hospital scale-up.`;
+    return `Medora1 is a next-generation secondary-care hospital network in the United Arab Emirates.\n\nOur founding thesis: "Premium is not expensive. They only sound alike."\n\nWe build hospitals for the UAE's insured middle-income population — people who fall between overcrowded government facilities and overpriced private hospitals. Medora1 offers premium secondary care at predictable, pre-agreed prices.\n\nFlagship: Dubai Investment Park (DIP) — built with Apollo Hospitals. 120+ beds, 6 surgical theaters, JCI-accredited protocols.\n\nEngine: MIHC — our proprietary hospital operating platform that delivers < 12 minute triage, 100% upfront billing, and 29% operating margins.\n\nFounders: Dr. Raza Siddiqui, Bidhann Chaudary, and Abhinav Sharma — three executives with combined experience across 11 countries, UAE sovereign mandates, and a 14x hospital scale-up.`;
   }
 
   // 6. Why secondary care
@@ -94,7 +99,7 @@ function generateSmartMedoraResponse(rawQuery: string): string {
     query.includes("why not tertiary") ||
     (query.includes("why") && query.includes("care"))
   ) {
-    return `Secondary care sits at the most powerful intersection in UAE healthcare:\n\n• High volume: The UAE's insured middle-income population faces the highest incidence of secondary procedures — orthopedics, general surgery, gynecology, cardiology diagnostics.\n• Underserved: Government hospitals are overcrowded. Private hospitals are overpriced. The insured middle class has no premium option at fair cost.\n• Systemizable: Secondary procedures are repeatable and schedulable — the perfect domain for Medora1 OS to deliver 29% margins.\n• Scalable: Unlike complex tertiary care, secondary hospitals are modular — 120 beds, 6 OR suites, replicable city by city.\n\nThis is why Medora1 focuses exclusively on secondary care — the highest-volume, least-served, most systemizable segment in UAE healthcare.`;
+    return `Secondary care sits at the most powerful intersection in UAE healthcare:\n\n• High volume: The UAE's insured middle-income population faces the highest incidence of secondary procedures — orthopedics, general surgery, gynecology, cardiology diagnostics.\n• Underserved: Government hospitals are overcrowded. Private hospitals are overpriced. The insured middle class has no premium option at fair cost.\n• Systemizable: Secondary procedures are repeatable and schedulable — the perfect domain for MIHC to deliver 29% margins.\n• Scalable: Unlike complex tertiary care, secondary hospitals are modular — 120 beds, 6 OR suites, replicable city by city.\n\nThis is why Medora1 focuses exclusively on secondary care — the highest-volume, least-served, most systemizable segment in UAE healthcare.`;
   }
 
   // 7. Pricing / Cost / Middle-Income Focus / Philosophy
@@ -110,10 +115,10 @@ function generateSmartMedoraResponse(rawQuery: string): string {
     query.includes("philosophy") ||
     query.includes("premium")
   ) {
-    return `Medora1 operates on a core clinical thesis: "Premium is not expensive. They only sound alike."\n\n• Expensive is what a hospital charges.\n• Premium is what a patient receives: the right diagnosis, at the right time, from an unhurried clinician, with a transparent bill understood before treatment starts.\n\nThese elements are not inherently costly — they are rare because traditional hospitals rely on manual coordination that doesn't scale. Medora1 OS replaces that manual effort with software-driven precision, compressing overhead so premium care is sustainably priced for the UAE's insured middle segment.\n\nEvery patient at Medora1 receives a 100% pre-agreed bill — no surprises, no post-discharge additions.`;
+    return `Medora1 operates on a core clinical thesis: "Premium is not expensive. They only sound alike."\n\n• Expensive is what a hospital charges.\n• Premium is what a patient receives: the right diagnosis, at the right time, from an unhurried clinician, with a transparent bill understood before treatment starts.\n\nThese elements are not inherently costly — they are rare because traditional hospitals rely on manual coordination that doesn't scale. MIHC replaces that manual effort with software-driven precision, compressing overhead so premium care is sustainably priced for the UAE's insured middle segment.\n\nEvery patient at Medora1 receives a 100% pre-agreed bill — no surprises, no post-discharge additions.`;
   }
 
-  // 8. Medora1 OS / Software / Technology
+  // 8. MIHC / Software / Technology
   if (
     query.includes("medora os") ||
     query.includes("operating system") ||
@@ -125,7 +130,7 @@ function generateSmartMedoraResponse(rawQuery: string): string {
     query.includes("algorithm") ||
     (query.includes("os") && query.includes("medora"))
   ) {
-    return `Medora1 OS is the proprietary hospital operating platform that runs the healthcare business — not just records.\n\nFour synchronized engines:\n1. Intelligent Triage Engine: Dynamic patient routing — < 12 minute door-to-doctor times.\n2. Diagnostic Velocity Engine: 4.2x faster imaging, pathology, and consultant review turnaround.\n3. Upfront Billing Algorithm: 100% pre-agreed procedure invoices generated before care begins.\n4. Autonomous Margin Telemetry: Real-time consumable and OR minute tracking — 29% operating margins.\n5. Network Learning Loop: Every lesson from DIP is automatically transferred to every subsequent Medora1 hospital.\n\nThis is what makes Medora1 a system, not just a hospital.`;
+    return `MIHC — Medora1 Integrated Healthcare Corporation — is the operating company behind the Medora1 hospital network, purpose-built to develop, own, and operate secondary-care hospitals across the UAE in partnership with Apollo Hospitals, starting at Dubai Investment Park.\n\nEvery MIHC facility runs on a single proprietary hospital OS that synchronizes four engines:\n1. Intelligent Triage Engine: Dynamic patient routing — < 12 minute door-to-doctor times.\n2. Diagnostic Velocity Engine: 4.2x faster imaging, pathology, and consultant review turnaround.\n3. Upfront Billing Algorithm: 100% pre-agreed invoices generated before care begins.\n4. Autonomous Margin Telemetry: Real-time OR and consumable tracking — 29% operating margins.\n5. Network Learning Loop: Every lesson from DIP transfers automatically to every subsequent hospital.\n\nThis is what makes Medora1 a scalable system, not just a single hospital.`;
   }
 
   // 9. DIP Flagship / Apollo Hospitals / Location / Facility
@@ -140,7 +145,7 @@ function generateSmartMedoraResponse(rawQuery: string): string {
     query.includes("hospital") ||
     query.includes("bed")
   ) {
-    return `Medora1's flagship hospital is located in Dubai Investment Park (DIP 1), developed in clinical partnership with Apollo Hospitals.\n\nFacility Details:\n• 120+ secondary-care inpatient beds and day recovery suites\n• 6 modular, high-yield surgical theaters\n• 24/7 urgent care and rapid diagnostics (CT, MRI, Ultrasound)\n• Specialties: Orthopedics, General Surgery, Cardiology, Internal Medicine, Gynecology, Pediatrics\n• Accreditations: JCI, TEMOS, ISO quality frameworks\n\nThe DIP facility is both proof and proving ground. Lessons learned here are embedded into Medora1 OS and carried forward to every subsequent Medora1 hospital.`;
+    return `Medora1's flagship hospital is located in Dubai Investment Park (DIP 1), developed in clinical partnership with Apollo Hospitals.\n\nFacility Details:\n• 120+ secondary-care inpatient beds and day recovery suites\n• 6 modular, high-yield surgical theaters\n• 24/7 urgent care and rapid diagnostics (CT, MRI, Ultrasound)\n• Specialties: Orthopedics, General Surgery, Cardiology, Internal Medicine, Gynecology, Pediatrics\n• Accreditations: JCI, TEMOS, ISO quality frameworks\n\nThe DIP facility is both proof and proving ground. Lessons learned here are embedded into MIHC and carried forward to every subsequent Medora1 hospital.`;
   }
 
   // 10. Founders / Leadership
@@ -158,7 +163,7 @@ function generateSmartMedoraResponse(rawQuery: string): string {
     query.includes("who started") ||
     query.includes("who created")
   ) {
-    return `Medora1 is co-founded by three healthcare executives with proven GCC sovereign credentials:\n\n1. Dr. Raza Siddiqui — Former CEO, Arabian Healthcare Group; Executive Director, RAK Hospital. Led networks across 11 countries with 650+ clinicians. Direct relationships with IHC, G42, and UAE sovereign health authorities.\n\n2. Bidhann Chaudary — Built Medi Q into a national operator under the UAE Presidential Program across 5 countries. Directed the UAE's nationwide COVID-19 vaccination infrastructure. Built a 200-bed, 50-ICU hospital in 9 days. Exited Medi Q to IHC (Tamouh Holding).\n\n3. Abhinav Sharma — IIM Ahmedabad alumnus. Scaled an integrated surgery platform from USD 6M to USD 84M (14x). Quintupled operating margins from 6% to 29%. Grew from 1 hospital to 13 across 7 specialties.`;
+    return `Medora1 is co-founded by three healthcare executives with proven GCC sovereign credentials:\n\n1. Dr. Raza Siddiqui — Former CEO, Arabian Healthcare Group; Executive Director Hospital. Led networks across 11 countries with 650+ clinicians. Direct relationships with IHC, G42, and UAE sovereign health authorities.\n\n2. Bidhann Chaudary — Built Medi Q into a national operator under the UAE Presidential Program across 5 countries. Directed the UAE's nationwide COVID-19 vaccination infrastructure. Built a 200-bed, 50-ICU hospital in 9 days. Exited Medi Q to IHC (Tamouh Holding).\n\n3. Abhinav Sharma — IIM Ahmedabad alumnus. Scaled an integrated surgery platform from USD 6M to USD 84M (14x). Quintupled operating margins from 6% to 29%. Grew from 1 hospital to 13 across 7 specialties.`;
   }
 
   // 11. Stakeholders / ROI / Investors / Insurers / Doctors
@@ -176,11 +181,11 @@ function generateSmartMedoraResponse(rawQuery: string): string {
     query.includes("margin") ||
     query.includes("return")
   ) {
-    return `Medora1 aligns all four healthcare stakeholders through one operating system:\n\n• Patients: Unhurried care, < 12 min triage, and 100% upfront transparent bills — no post-discharge surprise invoices.\n• Doctors & Nurses: +45% time returned to medicine as Medora1 OS automates administrative coordination, scheduling, and logistics.\n• Insurers: -28% lower secondary claims costs, fewer chronic complications, and automated pre-authorizations.\n• Investors: Predictable 29% operating profit margins, validated at DIP and repeatable across each subsequent facility.\n\nAll four stakeholders benefit simultaneously — not at each other's expense.`;
+    return `Medora1 aligns all four healthcare stakeholders through one operating system:\n\n• Patients: Unhurried care, < 12 min triage, and 100% upfront transparent bills — no post-discharge surprise invoices.\n• Doctors & Nurses: +45% time returned to medicine as MIHC automates administrative coordination, scheduling, and logistics.\n• Insurers: -28% lower secondary claims costs, fewer chronic complications, and automated pre-authorizations.\n• Investors: Predictable 29% operating profit margins, validated at DIP and repeatable across each subsequent facility.\n\nAll four stakeholders benefit simultaneously — not at each other's expense.`;
   }
 
   // 12. Default — specific and helpful, never a generic copy-paste fallback
-  return `I'm Medora1 Intelligence. I can give you precise answers on:\n\n• "Why secondary care?" — The market gap Medora1 fills in UAE healthcare\n• "What is Medora1 OS?" — The 4-engine hospital operating platform\n• "Apollo DIP details" — Our flagship facility in Dubai Investment Park\n• "Who are the founders?" — Dr. Raza Siddiqui, Bidhann Chaudary, Abhinav Sharma\n• "Medora1 pricing model" — Premium care at predictable, pre-agreed costs\n• "Stakeholder benefits" — For patients, doctors, insurers, and investors\n\nFeel free to ask in your own words.`;
+  return `I'm Medora1 Intelligence. I can give you precise answers on:\n\n• "Why secondary care?" — The market gap Medora1 fills in UAE healthcare\n• "What is MIHC?" — The 4-engine hospital operating platform\n• "Apollo DIP details" — Our flagship facility in Dubai Investment Park\n• "Who are the founders?" — Dr. Raza Siddiqui, Bidhann Chaudary, Abhinav Sharma\n• "Medora1 pricing model" — Premium care at predictable, pre-agreed costs\n• "Stakeholder benefits" — For patients, doctors, insurers, and investors\n\nFeel free to ask in your own words.`;
 }
 
 
@@ -225,7 +230,7 @@ export default function Modals({
         setMessages([
           {
             sender: "ai",
-            text: "Welcome to Medora1 Intelligence. Ask me anything about our Dubai Investment Park flagship, Medora1 OS architecture, our pricing model, clinical specialties, or our leadership team.",
+            text: "Welcome to Medora1 Intelligence. Ask me anything about our Dubai Investment Park flagship, MIHC architecture, our pricing model, clinical specialties, or our leadership team.",
           },
         ]);
       }
@@ -290,7 +295,7 @@ export default function Modals({
             <div className="flex gap-2 py-3 overflow-x-auto no-scrollbar border-b border-gray-100">
               {[
                 "Why secondary care?",
-                "What is Medora1 OS?",
+                "What is MIHC?",
                 "Apollo DIP details",
                 "Founders track record",
                 "Presence in other countries?",
@@ -339,7 +344,7 @@ export default function Modals({
                 type="text"
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
-                placeholder="Ask about Medora1, DIP hospital, or Medora1 OS..."
+                placeholder="Ask about Medora1, DIP hospital, or MIHC..."
                 className="flex-1 bg-[#F4F4F4] border border-gray-300 rounded-[4px] px-3.5 py-2 text-sm text-[#171A20] placeholder-[#5C5E62] focus:outline-none focus:border-[#171A20] transition"
               />
               <button
@@ -435,7 +440,7 @@ export default function Modals({
                     className="w-full bg-[#F4F4F4] border border-gray-300 rounded-[4px] px-3.5 py-2 text-[#171A20] focus:outline-none focus:border-[#171A20]"
                   >
                     <option value="DIP Hospital Tour & Facility Briefing">DIP Hospital Tour &amp; Facility Briefing</option>
-                    <option value="Medora1 OS Demonstration">Medora1 OS Enterprise Demo</option>
+                    <option value="MIHC Demonstration">MIHC Enterprise Demo</option>
                     <option value="Doctor & Clinical Specialty Affiliation">Doctor &amp; Clinical Specialty Affiliation</option>
                     <option value="Insurance Network Partnership">Insurance Network Partnership</option>
                     <option value="Institutional Investor Discussion">Institutional Investor Discussion</option>
@@ -454,7 +459,7 @@ export default function Modals({
         </div>
       )}
 
-      {/* 3. Medora1 OS Architecture Modal */}
+      {/* 3. MIHC Architecture Modal */}
       {osModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={onCloseOSModal} />
@@ -462,7 +467,7 @@ export default function Modals({
             <div className="flex items-center justify-between pb-4 border-b border-gray-200">
               <div className="flex items-center space-x-2">
                 <Cpu className="w-5 h-5 text-[#3E6AE1]" />
-                <h3 className="text-xl font-semibold text-[#171A20]">Medora1 OS Architectural Blueprint</h3>
+                <h3 className="text-xl font-semibold text-[#171A20]">MIHC Architectural Blueprint</h3>
               </div>
               <button
                 onClick={onCloseOSModal}
@@ -476,7 +481,7 @@ export default function Modals({
               <div className="p-4 rounded-lg bg-[#F4F4F4] border border-gray-200">
                 <h4 className="text-[#171A20] font-semibold mb-1">The Core Engine</h4>
                 <p className="text-xs leading-relaxed text-[#5C5E62]">
-                  Medora1 OS replaces legacy, disconnected EHRs with an integrated Hospital Operating Architecture that synchronizes clinical workflows, OR scheduling, inventory consumption, and upfront pricing in real time.
+                  MIHC replaces legacy, disconnected EHRs with an integrated Hospital Operating Architecture that synchronizes clinical workflows, OR scheduling, inventory consumption, and upfront pricing in real time.
                 </p>
               </div>
 
@@ -548,11 +553,11 @@ export default function Modals({
                     </div>
                   </div>
                   <p className="text-xs sm:text-sm leading-relaxed text-[#393C41]">
-                    With over 20 years leading healthcare giants across the Gulf, Dr. Raza served as CEO of Arabian Healthcare Group and Executive Director of RAK Hospital. His footprint spans 11 countries, 650+ healthcare professionals, and international accreditations under JCI, TEMOS, and ISO.
+                    With over 20 years leading healthcare giants across the Gulf, Dr. Raza served as CEO of Arabian Healthcare Group and Executive Director of Arabian Healthcare Group. His footprint spans 11 countries, 650+ healthcare professionals, and international accreditations under JCI, TEMOS, and ISO.
                   </p>
                   <div className="p-3.5 rounded-lg bg-[#F4F4F4] border border-gray-200 text-xs">
                     <strong className="text-[#171A20] block mb-1">Key Sovereign Relationships:</strong>
-                    International Holding Company (IHC), G42, UAE sovereign health authorities, and RAK Chamber of Commerce Board.
+                    International Holding Company (IHC), G42, UAE sovereign health authorities, and  Chamber of Commerce Board.
                   </div>
                 </>
               )}

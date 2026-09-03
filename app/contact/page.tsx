@@ -47,7 +47,7 @@ export default function ContactPage() {
           Contact Medora1
         </h1>
         <p className="mt-4 text-base sm:text-lg text-[#393C41] max-w-2xl mx-auto font-light leading-relaxed">
-          Schedule private walkthroughs of our Apollo-partnered flagship facility in Dubai Investment Park or inquire about Medora1 OS deployments.
+          Schedule private walkthroughs of our Apollo-partnered flagship facility in Dubai Investment Park or inquire about MIHC deployments.
         </p>
       </section>
 
@@ -163,7 +163,7 @@ export default function ContactPage() {
                       className="w-full bg-[#F4F4F4] border border-gray-300 rounded-[4px] px-3.5 py-2.5 text-[#171A20] focus:outline-none focus:border-[#171A20]"
                     >
                       <option value="DIP Hospital Tour & Facility Briefing">DIP Hospital Tour &amp; Facility Briefing</option>
-                      <option value="Medora1 OS Enterprise Demo">Medora1 OS Enterprise Demo</option>
+                      <option value="MIHC Enterprise Demo">MIHC Enterprise Demo</option>
                       <option value="Doctor & Clinical Specialty Affiliation">Doctor &amp; Clinical Specialty Affiliation</option>
                       <option value="Insurance Network Partnership">Insurance Network Partnership</option>
                       <option value="Institutional Investment / Partnership">Institutional Investment / Partnership</option>

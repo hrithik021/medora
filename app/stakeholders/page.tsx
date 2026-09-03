@@ -60,7 +60,7 @@ export default function StakeholdersPage() {
       headline: "A hospital that generates cash, and a system that repeats the result.",
       points: [
         "Asset-efficient secondary care model with high OR asset turns",
-        "Software-driven network scalability powered by Medora1 OS",
+        "Software-driven network scalability powered by MIHC",
         "1st hospital learnings transfer seamlessly to the 10th",
         "Experienced execution team with proven $6M to $84M scale-up playbook",
       ],

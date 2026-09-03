@@ -26,7 +26,7 @@ export default function Navbar({ onOpenAssistant, onOpenSchedule }: NavbarProps)
 
   const navItems = [
     { name: "Hospitals", href: "/hospitals" },
-    { name: "Medora1 OS", href: "/medora-os" },
+    { name: "MIHC", href: "/mihc" },
     { name: "Stakeholders", href: "/stakeholders" },
     { name: "Leadership", href: "/leadership" },
     { name: "Contact", href: "/contact" },
@@ -34,7 +34,7 @@ export default function Navbar({ onOpenAssistant, onOpenSchedule }: NavbarProps)
 
   const drawerItems = [
     { label: "DIP Flagship Hospital (Apollo)", href: "/hospitals" },
-    { label: "Medora1 OS Operating Platform", href: "/medora-os" },
+    { label: "MIHC Operating Platform", href: "/mihc" },
     { label: "Four Stakeholders Value System", href: "/stakeholders" },
     { label: "Executive Governance & Founders", href: "/leadership" },
     { label: "Clinical Specialties", href: "/hospitals" },

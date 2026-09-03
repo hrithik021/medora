@@ -61,7 +61,7 @@ export default function MedoraOSPage() {
       <section className="relative h-[65vh] min-h-[500px] flex items-center justify-center text-center overflow-hidden bg-slate-950">
         <Image
           src="/images/medora_os_interface.jpg"
-          alt="Medora1 OS Medical Command Center"
+          alt="MIHC Medical Command Center"
           fill
           priority
           className="object-cover object-center opacity-70"
@@ -74,7 +74,7 @@ export default function MedoraOSPage() {
             Proprietary Technology
           </span>
           <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight mt-4">
-            Medora1 OS
+            MIHC
           </h1>
           <p className="mt-3 text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto font-light">
             The operating system that runs the hospital — not the records, the business.
@@ -125,18 +125,18 @@ export default function MedoraOSPage() {
         </div>
       </section>
 
-      {/* Comparison: Legacy Healthcare IT vs Medora1 OS */}
+      {/* Comparison: Legacy Healthcare IT vs MIHC */}
       <section className="bg-[#F4F4F4] py-20 px-6 sm:px-12">
         <div className="max-w-[1100px] mx-auto">
           <h2 className="text-3xl font-semibold text-center text-[#171A20] mb-12">
-            Traditional Hospital IT vs. Medora1 OS
+            Traditional Hospital IT vs. MIHC
           </h2>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="grid grid-cols-3 bg-[#171A20] text-white p-4 text-xs sm:text-sm font-semibold">
               <div>Capability</div>
               <div>Legacy Hospital Systems</div>
-              <div className="text-amber-400">Medora1 OS</div>
+              <div className="text-amber-400">MIHC</div>
             </div>
 
             <div className="divide-y divide-gray-100 text-xs sm:text-sm text-[#393C41]">

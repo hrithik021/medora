@@ -14,7 +14,7 @@ export default function FoundersSection({ onOpenFounderModal }: FoundersSectionP
       initials: "RS",
       name: "Dr. Raza Siddiqui",
       role: "Co-Founder",
-      bio: "Two decades running Gulf hospital groups, from CEO of Arabian Healthcare Group to Executive Director of RAK Hospital — operations across 11 countries and 650+ healthcare professionals, built on JCI, TEMOS and ISO accreditation. Holds direct relationships across IHC, G42 and the UAE's sovereign health entities, and sits on the RAK Chamber of Commerce Board.",
+      bio: "Two decades running Gulf hospital groups, from CEO of Arabian Healthcare Group to Executive Director of Arabian Healthcare Group — operations across 11 countries and 650+ healthcare professionals, built on JCI, TEMOS and ISO accreditation. Holds direct relationships across IHC, G42 and the UAE's sovereign health entities, and sits on the  Chamber of Commerce Board.",
     },
     {
       id: "bidhann",

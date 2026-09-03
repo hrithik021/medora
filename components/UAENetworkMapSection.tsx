@@ -21,40 +21,32 @@ export default function UAENetworkMapSection({
       name: "Dubai Investment Park (DIP)",
       role: "Flagship Secondary Care Hospital (Apollo Partner)",
       beds: "120 Beds • 6 OR Theaters",
-      x: "64%",
-      y: "74%",
+      x: "65%",
+      y: "48%",
     },
     {
-      id: "dubai-core",
-      name: "Dubai Central & Marina",
-      role: "Day Surgery & Ambulatory Diagnostic Hub",
-      beds: "Rapid Triage & Specialty Care",
-      x: "68%",
-      y: "43%",
+      id: "dubai-central",
+      name: "Dubai Central Healthcare Hub",
+      role: "Secondary Care Hospital & Surgical Center",
+      beds: "90 Beds • 4 OR Theaters",
+      x: "70%",
+      y: "40%",
     },
     {
-      id: "abu-dhabi",
-      name: "Abu Dhabi Corridor",
+      id: "abu-dhabi-capital",
+      name: "Abu Dhabi Capital Hospital",
       role: "Secondary Care Expansion Center",
-      beds: "Insured Middle Segment Corridor",
-      x: "56%",
-      y: "62%",
+      beds: "100 Beds • 5 OR Theaters",
+      x: "42%",
+      y: "65%",
     },
     {
-      id: "sharjah",
-      name: "Sharjah & Northern Emirates",
-      role: "Surgical & Outpatient Specialty Suite",
-      beds: "High-Throughput Clinical Wing",
-      x: "72%",
-      y: "32%",
-    },
-    {
-      id: "rak",
-      name: "Ras Al Khaimah",
-      role: "Institutional Referral Network (RAK Hospital Ties)",
-      beds: "Tertiary & Secondary Integration",
-      x: "82%",
-      y: "14%",
+      id: "abu-dhabi-yas",
+      name: "Abu Dhabi Yas Medical Center",
+      role: "Secondary Care & Diagnostic Center",
+      beds: "80 Beds • 4 OR Theaters",
+      x: "48%",
+      y: "58%",
     },
   ];
 
@@ -64,16 +56,45 @@ export default function UAENetworkMapSection({
       <div className="relative w-full h-[420px] sm:h-[500px] rounded-lg overflow-hidden border border-gray-200 bg-[#E8ECEF] shadow-sm">
         <Image
           src="/images/tesla_style_uae_map.jpg"
-          alt="Medora1 UAE Hospital and Clinical Network Map"
+          alt="Medora1 Dubai & Abu Dhabi Hospital and Clinical Network Map"
           fill
           className="object-cover object-center"
           quality={95}
         />
 
+        {/* Interactive Map Pins (Dubai and Abu Dhabi Only) */}
+        {locations.map((loc) => {
+          const isActive = activePin === loc.id;
+          return (
+            <button
+              key={loc.id}
+              onClick={() => setActivePin(loc.id)}
+              style={{ left: loc.x, top: loc.y }}
+              className="absolute -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer"
+              title={loc.name}
+            >
+              <span className="relative flex items-center justify-center">
+                {isActive && (
+                  <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-red-400 opacity-75" />
+                )}
+                <span
+                  className={`relative inline-flex items-center justify-center rounded-full shadow-lg transition-transform ${
+                    isActive
+                      ? "w-7 h-7 bg-red-600 text-white scale-110 ring-4 ring-white"
+                      : "w-5 h-5 bg-[#171A20] text-white hover:scale-125 ring-2 ring-white"
+                  }`}
+                >
+                  <MapPin className={`${isActive ? "w-4 h-4" : "w-3 h-3"}`} />
+                </span>
+              </span>
+            </button>
+          );
+        })}
+
         {/* Floating Top-Left "Find Me" Button (Tesla exact match) */}
         <button
           onClick={() => setActivePin("dip")}
-          className="absolute top-5 left-5 h-9 px-3.5 rounded bg-white/90 hover:bg-white text-[#171A20] text-xs font-medium backdrop-blur-md shadow-md border border-gray-200 flex items-center gap-2 transition cursor-pointer"
+          className="absolute top-5 left-5 h-9 px-3.5 rounded bg-white/90 hover:bg-white text-[#171A20] text-xs font-medium backdrop-blur-md shadow-md border border-gray-200 flex items-center gap-2 transition cursor-pointer z-20"
         >
           <Navigation className="w-3.5 h-3.5 text-[#171A20]" />
           <span>Find Me</span>
@@ -82,7 +103,7 @@ export default function UAENetworkMapSection({
         {/* Floating Top-Right Expand Button (Tesla exact match) */}
         <button
           onClick={onOpenSchedule}
-          className="absolute top-5 right-5 w-9 h-9 rounded bg-white/90 hover:bg-white text-[#171A20] backdrop-blur-md shadow-md border border-gray-200 flex items-center justify-center transition cursor-pointer"
+          className="absolute top-5 right-5 w-9 h-9 rounded bg-white/90 hover:bg-white text-[#171A20] backdrop-blur-md shadow-md border border-gray-200 flex items-center justify-center transition cursor-pointer z-20"
           title="Fullscreen Network"
           aria-label="Expand Map"
         >
@@ -91,7 +112,7 @@ export default function UAENetworkMapSection({
 
         {/* Active Location Info Card Overlay on Map */}
         {activePin && (
-          <div className="absolute bottom-5 left-5 right-5 sm:right-auto sm:max-w-xs bg-white/95 backdrop-blur-md rounded-lg p-4 shadow-xl border border-gray-200 text-xs animate-fade-in">
+          <div className="absolute bottom-5 left-5 right-5 sm:right-auto sm:max-w-xs bg-white/95 backdrop-blur-md rounded-lg p-4 shadow-xl border border-gray-200 text-xs animate-fade-in z-20">
             {locations.find((l) => l.id === activePin) && (
               <>
                 <div className="flex items-center space-x-1.5 text-red-600 font-semibold uppercase tracking-wider text-[10px]">

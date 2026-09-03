@@ -11,13 +11,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Medora1 | Accessible Premium Care in the UAE",
   description:
-    "Secondary-care hospitals built for the UAE's insured middle-income population. Powered by Medora1 OS in partnership with Apollo Hospitals, Dubai Investment Park.",
+    "Secondary-care hospitals built for the UAE's insured middle-income population. Powered by MIHC in partnership with Apollo Hospitals, Dubai Investment Park.",
   keywords: [
     "Medora1",
     "Apollo Hospitals UAE",
     "Dubai Investment Park Hospital",
     "Secondary Care Dubai",
-    "Medora1 OS",
+    "MIHC",
     "Healthcare UAE",
     "Dr. Raza Siddiqui",
     "Bidhann Chaudary",

@@ -20,7 +20,7 @@ export default function HospitalCardsSection({
         <div className="relative isolate overflow-hidden h-[560px] rounded-lg flex flex-col justify-between p-8 text-white group shadow-sm bg-black">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/medora_dip_hospital.jpg"
+              src="/images/apollo_medora_dip.jpg"
               alt="Dubai Investment Park Flagship Hospital"
               fill
               className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -99,7 +99,7 @@ export default function HospitalCardsSection({
               Secondary Care Network
             </h3>
             <p className="text-sm sm:text-base text-slate-200 mt-1 font-normal drop-shadow">
-              1 to 10+ Hospitals Learning Loop
+              Dubai &amp; Abu Dhabi Hospitals
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">

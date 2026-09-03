@@ -39,7 +39,7 @@ export default function HospitalsPage() {
       {/* Hero Banner */}
       <section className="relative h-[65vh] min-h-[500px] flex items-center justify-center text-center overflow-hidden bg-slate-900">
         <Image
-          src="/images/medora_dip_hospital.jpg"
+          src="/images/apollo_medora_dip.jpg"
           alt="Medora1 Apollo Hospitals Dubai Investment Park"
           fill
           priority
@@ -66,10 +66,10 @@ export default function HospitalsPage() {
               Schedule Facility Tour
             </button>
             <Link
-              href="/medora-os"
+              href="/mihc"
               className="h-10 px-6 rounded-[4px] bg-white hover:bg-slate-100 text-[#171A20] text-sm font-medium transition flex items-center justify-center cursor-pointer"
             >
-              Medora1 OS Integration
+              MIHC Integration
             </Link>
           </div>
         </div>
