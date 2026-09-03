@@ -58,7 +58,7 @@ const mobileSlides = [
     title: "Apollo · Medora 1",
     subtitle: "DIP flagship built\nwith Apollo Hospitals.",
     tag: "Dubai Investment Park",
-    image: "/images/apollo_medora_dip.jpg",
+    image: "/images/mobile_apollo_medora_dip.jpg",
     primaryBtn: "Schedule Tour",
     secondaryBtn: "Our Technology",
     objectPosition: "center center",
@@ -145,7 +145,7 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
           className="object-cover"
           style={{ objectPosition: mobileSlide.objectPosition }}
           sizes="100vw"
-          quality={90}
+          quality={100}
         />
         {/* Mobile gradient — strong at both ends so text pops regardless of image */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent via-50% to-black/75 z-10 pointer-events-none" />
