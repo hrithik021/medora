@@ -276,23 +276,7 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
           </div>
         )}
 
-        {/* Desktop Arrow Buttons (middle) */}
-        <div className="relative w-full flex justify-between px-6 pointer-events-none" style={{ top: 0 }}>
-          <button
-            onClick={handlePrev}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-black/25 hover:bg-black/50 text-white backdrop-blur-sm flex items-center justify-center transition border border-white/20 cursor-pointer shadow-lg"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={handleNext}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-black/25 hover:bg-black/50 text-white backdrop-blur-sm flex items-center justify-center transition border border-white/20 cursor-pointer shadow-lg"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
+
 
         {/* Desktop Bottom Section */}
         <div className="pb-16 flex flex-col items-center max-w-4xl mx-auto px-4 w-full">
@@ -342,6 +326,23 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
           </div>
         </div>
       </div>
+
+      {/* Permanent Fixed-Center Desktop Navigation Arrows (Locked at exact 50% vertical center on all 3 slides) */}
+      <button
+        onClick={handlePrev}
+        className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/35 hover:bg-black/65 text-white backdrop-blur-md items-center justify-center transition border border-white/20 z-30 cursor-pointer shadow-xl active:scale-95"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+
+      <button
+        onClick={handleNext}
+        className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/35 hover:bg-black/65 text-white backdrop-blur-md items-center justify-center transition border border-white/20 z-30 cursor-pointer shadow-xl active:scale-95"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
     </section>
   );
 }
