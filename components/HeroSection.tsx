@@ -15,15 +15,17 @@ const desktopSlides = [
     title: "Medora 1",
     subtitle: "Premium care. Priced for the middle.",
     linkText: "Secondary-Care Hospitals for UAE Middle-Income",
+    tag: "UAE Secondary Care • Dubai & Abu Dhabi",
     image: "/images/desktop_hero_1_skyline.jpg",
     primaryBtn: "Explore DIP Flagship",
     secondaryBtn: "Learn More",
-    textPosition: "top" as const,
+    textPosition: "bottom" as const,
   },
   {
     title: "Apollo · Medora 1",
     subtitle: "Flagship Hospital — Dubai Investment Park",
     linkText: "Where Clinical Excellence Meets Accessible Pricing",
+    tag: "Flagship Facility • Dubai Investment Park",
     image: "/images/apollo_medora_dip.jpg",
     primaryBtn: "Schedule Tour",
     secondaryBtn: "View Blueprint",
@@ -33,10 +35,11 @@ const desktopSlides = [
     title: "Secondary Care",
     subtitle: "Dubai & Abu Dhabi. 10 Hospitals in 36 Months.",
     linkText: "Discover the Proving Ground Architecture",
+    tag: "Modular Surgical Suites • High-Velocity Care",
     image: "/images/secondary_care_facility.jpg",
     primaryBtn: "Clinical Network",
     secondaryBtn: "Learn More",
-    textPosition: "top" as const,
+    textPosition: "bottom" as const,
   },
 ];
 
@@ -165,12 +168,8 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
           sizes="100vw"
           quality={100}
         />
-        {/* Dynamic desktop gradient: bottom-heavy when text is at bottom so building is crystal clear */}
-        {desktopSlide.textPosition === "bottom" ? (
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 via-35% to-transparent z-10 pointer-events-none" />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/50 z-10 pointer-events-none" />
-        )}
+        {/* Bottom-heavy desktop gradient: keeps upper 70% of image completely clear and vivid */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 via-35% to-transparent z-10 pointer-events-none" />
       </div>
 
       {/* ══════════════════════════════════════════
@@ -234,82 +233,48 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
 
 
       {/* ══════════════════════════════════════════
-          DESKTOP LAYOUT (md+)
+      {/* ══════════════════════════════════════════
+          DESKTOP LAYOUT (md+) — Always bottom-anchored content
       ══════════════════════════════════════════ */}
       <div className="hidden md:flex absolute inset-0 z-20 flex-col justify-between items-center text-center">
-        {/* Desktop Top Section */}
-        {desktopSlide.textPosition === "bottom" ? (
-          <div className="pt-20 px-4">
-            <span className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold text-white tracking-wide shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-[#E8691E] animate-pulse" />
-              Flagship Secondary-Care Hospital • Dubai Investment Park
-            </span>
-          </div>
-        ) : (
-          <div className="pt-24 px-4 max-w-4xl mx-auto flex flex-col items-center">
-            <h1 className="text-5xl md:text-[56px] font-semibold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+        {/* Desktop Top Pill Tag */}
+        <div className="pt-20 px-4">
+          <span className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold text-white tracking-wide shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-[#E8691E] animate-pulse" />
+            {desktopSlide.tag}
+          </span>
+        </div>
+
+        {/* Desktop Bottom Section: Title, Subtitle, Buttons, and Dots */}
+        <div className="pb-16 flex flex-col items-center max-w-4xl mx-auto px-4 w-full">
+          <div className="flex flex-col items-center mb-5 animate-fade-in">
+            <h1 className="text-4xl md:text-[50px] font-semibold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
               {desktopSlide.title}
             </h1>
-            <p className="mt-2 text-lg text-white font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+            <p className="mt-1 text-base md:text-lg text-white/95 font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
               {desktopSlide.subtitle}
             </p>
             <button
               onClick={onOpenOSModal}
-              className="mt-1 text-sm text-white hover:text-slate-200 underline underline-offset-4 decoration-white/70 hover:decoration-white transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] cursor-pointer"
+              className="mt-1 text-sm text-white/90 hover:text-white underline underline-offset-4 decoration-white/70 hover:decoration-white transition-colors drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)] cursor-pointer"
             >
               {desktopSlide.linkText}
             </button>
-            <div className="mt-6 flex flex-row gap-4 w-full max-w-[420px] justify-center">
+            <div className="mt-5 flex flex-row gap-4 w-full max-w-[420px] justify-center">
               <button
                 onClick={onOpenSchedule}
-                className="w-[190px] h-10 rounded-[4px] bg-[#3E6AE1] hover:bg-[#345ac2] text-white text-[14px] font-medium transition active:scale-[0.98] shadow-md flex items-center justify-center cursor-pointer"
+                className="w-[190px] h-10 rounded-[4px] bg-[#3E6AE1] hover:bg-[#345ac2] text-white text-[14px] font-medium transition active:scale-[0.98] shadow-lg flex items-center justify-center cursor-pointer"
               >
                 {desktopSlide.primaryBtn}
               </button>
               <button
                 onClick={onOpenOSModal}
-                className="w-[190px] h-10 rounded-[4px] bg-white hover:bg-slate-100 text-[#171A20] text-[14px] font-medium transition active:scale-[0.98] shadow-md flex items-center justify-center cursor-pointer"
+                className="w-[190px] h-10 rounded-[4px] bg-white hover:bg-slate-100 text-[#171A20] text-[14px] font-medium transition active:scale-[0.98] shadow-lg flex items-center justify-center cursor-pointer"
               >
                 {desktopSlide.secondaryBtn}
               </button>
             </div>
           </div>
-        )}
-
-
-
-        {/* Desktop Bottom Section */}
-        <div className="pb-16 flex flex-col items-center max-w-4xl mx-auto px-4 w-full">
-          {desktopSlide.textPosition === "bottom" && (
-            <div className="flex flex-col items-center mb-5 animate-fade-in">
-              <h1 className="text-4xl md:text-[50px] font-semibold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-                {desktopSlide.title}
-              </h1>
-              <p className="mt-1 text-base md:text-lg text-white/95 font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-                {desktopSlide.subtitle}
-              </p>
-              <button
-                onClick={onOpenOSModal}
-                className="mt-1 text-sm text-white/90 hover:text-white underline underline-offset-4 decoration-white/70 hover:decoration-white transition-colors drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)] cursor-pointer"
-              >
-                {desktopSlide.linkText}
-              </button>
-              <div className="mt-5 flex flex-row gap-4 w-full max-w-[420px] justify-center">
-                <button
-                  onClick={onOpenSchedule}
-                  className="w-[190px] h-10 rounded-[4px] bg-[#3E6AE1] hover:bg-[#345ac2] text-white text-[14px] font-medium transition active:scale-[0.98] shadow-lg flex items-center justify-center cursor-pointer"
-                >
-                  {desktopSlide.primaryBtn}
-                </button>
-                <button
-                  onClick={onOpenOSModal}
-                  className="w-[190px] h-10 rounded-[4px] bg-white hover:bg-slate-100 text-[#171A20] text-[14px] font-medium transition active:scale-[0.98] shadow-lg flex items-center justify-center cursor-pointer"
-                >
-                  {desktopSlide.secondaryBtn}
-                </button>
-              </div>
-            </div>
-          )}
 
           {/* Desktop Carousel Dots */}
           <div className="flex items-center justify-center space-x-2">
