@@ -147,8 +147,8 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
           sizes="100vw"
           quality={100}
         />
-        {/* Mobile gradient — strong at both ends so text pops regardless of image */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent via-50% to-black/75 z-10 pointer-events-none" />
+        {/* Mobile gradient — clean subtle framing for buttons and top pill */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent via-50% to-black/55 z-10 pointer-events-none" />
       </div>
 
       {/* ══════════════════════════════════════════
@@ -185,18 +185,8 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
           </span>
         </div>
 
-        {/* BOTTOM: Frosted glass card anchored at bottom — always readable */}
-        <div className="px-3 pb-4 flex flex-col items-stretch">
-          {/* Frosted glass text card */}
-          <div className="bg-black/50 backdrop-blur-md rounded-2xl px-5 py-4 mb-3 text-center border border-white/10">
-            <h1 className="text-[30px] font-semibold tracking-tight text-white leading-tight whitespace-pre-line">
-              {mobileSlide.title}
-            </h1>
-            <p className="mt-1.5 text-[13px] text-white/85 leading-snug whitespace-pre-line font-light max-w-[260px] mx-auto">
-              {mobileSlide.subtitle}
-            </p>
-          </div>
-
+        {/* BOTTOM: Action Buttons and Dots anchored at bottom */}
+        <div className="px-4 pb-4 flex flex-col items-stretch">
           {/* CTA Buttons — full width, large touch targets */}
           <div className="flex flex-col gap-2.5">
             <button
