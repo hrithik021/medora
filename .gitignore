@@ -1,0 +1,10 @@
+node_modules/
+.next/
+*.local
+.env
+.env.*
+!.env.example
+*.pack
+*.log
+.DS_Store
+starter-index.html.bak
