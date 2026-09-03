@@ -11,23 +11,23 @@ export default function FoundersSection({ onOpenFounderModal }: FoundersSectionP
   const founders = [
     {
       id: "dr-raza",
-      initials: "RS",
       name: "Dr. Raza Siddiqui",
       role: "Co-Founder",
-      bio: "Two decades running Gulf hospital groups, from CEO of Arabian Healthcare Group to Executive Director of Arabian Healthcare Group — operations across 11 countries and 650+ healthcare professionals, built on JCI, TEMOS and ISO accreditation. Holds direct relationships across IHC, G42 and the UAE's sovereign health entities, and sits on the  Chamber of Commerce Board.",
+      image: "/images/founder_raza.jpg",
+      bio: "Two decades running Gulf hospital groups, from CEO of Arabian Healthcare Group to Executive Director of Arabian Healthcare Group — operations across 11 countries and 650+ healthcare professionals, built on JCI, TEMOS and ISO accreditation. Holds direct relationships across IHC, G42 and the UAE's sovereign health entities, and sits on the Chamber of Commerce Board.",
     },
     {
       id: "bidhann",
-      initials: "BC",
-      name: "Bidhann Chaudary",
+      name: "Bidhann Chowdhary",
       role: "Co-Founder",
+      image: "/images/founder_bidhann.jpg",
       bio: "Built Medi Q into a hospital operator trusted with national-scale mandates — hospitals delivered under the UAE Presidential Program across five countries, the UAE's nationwide COVID-19 vaccination program, and a 200-bed, 50-ICU field hospital raised in nine days — before leading Medi Q to its exit to IHC (Tamouh Holding).",
     },
     {
       id: "abhinav",
-      initials: "AS",
       name: "Abhinav Sharma",
       role: "Co-Founder",
+      image: "/images/founder_abhinav.jpg",
       bio: "An IIM Ahmedabad alumnus who took a surgery platform from USD 6M to USD 84M — a 14x scale-up — while nearly quintupling profit margin, from 6% to 29%, and growing the network from 1 hospital to 13 across 7 specialties and 4 service lines.",
     },
   ];
@@ -48,13 +48,24 @@ export default function FoundersSection({ onOpenFounderModal }: FoundersSectionP
           <div
             key={f.id}
             onClick={() => onOpenFounderModal(f.id)}
-            className="p-8 rounded-lg bg-[#F4F4F4] hover:bg-[#ECECEC] transition-colors cursor-pointer flex flex-col justify-between"
+            className="group p-6 rounded-lg bg-[#F4F4F4] hover:bg-[#ECECEC] transition-all cursor-pointer flex flex-col justify-between border border-gray-200/60 shadow-sm"
           >
             <div>
-              <div className="text-xl font-bold text-[#5C5E62] tracking-wider mb-4">
-                {f.initials}
+              {/* Executive Portrait Photo */}
+              <div className="relative w-full h-72 rounded-md overflow-hidden mb-5 bg-slate-200 border border-gray-200">
+                <Image
+                  src={f.image}
+                  alt={f.name}
+                  fill
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  quality={95}
+                />
               </div>
-              <h3 className="text-xl font-semibold text-[#171A20]">{f.name}</h3>
+
+              <h3 className="text-xl font-semibold text-[#171A20] group-hover:text-[#3E6AE1] transition-colors">
+                {f.name}
+              </h3>
               <div className="text-xs text-[#5C5E62] font-medium mt-0.5">{f.role}</div>
               <p className="mt-4 text-sm text-[#393C41] leading-relaxed">
                 {f.bio}
@@ -63,7 +74,7 @@ export default function FoundersSection({ onOpenFounderModal }: FoundersSectionP
 
             <div className="mt-6 pt-4 border-t border-gray-300 flex justify-between items-center text-xs font-semibold text-[#171A20]">
               <span>View Background</span>
-              <span>&rarr;</span>
+              <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </div>
           </div>
         ))}

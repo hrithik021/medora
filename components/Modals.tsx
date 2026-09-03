@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { X, Sparkles, Send, CheckCircle, Cpu } from "lucide-react";
 import Logo from "./Logo";
 
@@ -543,9 +544,14 @@ export default function Modals({
             <div className="mt-6 text-sm text-[#393C41] space-y-4">
               {founderModalId === "dr-raza" && (
                 <>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-lg bg-[#F4F4F4] text-[#171A20] border border-gray-200 flex items-center justify-center font-bold text-lg">
-                      RS
+                  <div className="flex items-center space-x-4">
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-200 shadow-sm bg-slate-100">
+                      <Image
+                        src="/images/founder_raza.jpg"
+                        alt="Dr. Raza Siddiqui"
+                        fill
+                        className="object-cover object-top"
+                      />
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-[#171A20]">Dr. Raza Siddiqui</h4>
@@ -557,19 +563,24 @@ export default function Modals({
                   </p>
                   <div className="p-3.5 rounded-lg bg-[#F4F4F4] border border-gray-200 text-xs">
                     <strong className="text-[#171A20] block mb-1">Key Sovereign Relationships:</strong>
-                    International Holding Company (IHC), G42, UAE sovereign health authorities, and  Chamber of Commerce Board.
+                    International Holding Company (IHC), G42, UAE sovereign health authorities, and Chamber of Commerce Board.
                   </div>
                 </>
               )}
 
               {founderModalId === "bidhann" && (
                 <>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-lg bg-[#F4F4F4] text-[#171A20] border border-gray-200 flex items-center justify-center font-bold text-lg">
-                      BC
+                  <div className="flex items-center space-x-4">
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-200 shadow-sm bg-slate-100">
+                      <Image
+                        src="/images/founder_bidhann.jpg"
+                        alt="Bidhann Chowdhary"
+                        fill
+                        className="object-cover object-top"
+                      />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-[#171A20]">Bidhann Chaudary</h4>
+                      <h4 className="text-lg font-semibold text-[#171A20]">Bidhann Chowdhary</h4>
                       <p className="text-xs text-[#5C5E62] font-medium">Co-Founder &bull; National Mandate Operator</p>
                     </div>
                   </div>
@@ -585,9 +596,14 @@ export default function Modals({
 
               {founderModalId === "abhinav" && (
                 <>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-lg bg-[#F4F4F4] text-[#171A20] border border-gray-200 flex items-center justify-center font-bold text-lg">
-                      AS
+                  <div className="flex items-center space-x-4">
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-200 shadow-sm bg-slate-100">
+                      <Image
+                        src="/images/founder_abhinav.jpg"
+                        alt="Abhinav Sharma"
+                        fill
+                        className="object-cover object-top"
+                      />
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-[#171A20]">Abhinav Sharma</h4>

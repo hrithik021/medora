@@ -19,22 +19,22 @@ export default function LeadershipPage() {
   const founders = [
     {
       id: "dr-raza",
-      initials: "RS",
       name: "Dr. Raza Siddiqui",
       role: "Co-Founder",
+      image: "/images/founder_raza.jpg",
       highlights: "20+ Years GCC Hospital Leadership",
-      bio: "Two decades running Gulf hospital groups, from CEO of Arabian Healthcare Group to Executive Director of Arabian Healthcare Group — operations across 11 countries and 650+ healthcare professionals, built on JCI, TEMOS and ISO accreditation. Holds direct relationships across IHC, G42 and the UAE's sovereign health entities, and sits on the  Chamber of Commerce Board.",
+      bio: "Two decades running Gulf hospital groups, from CEO of Arabian Healthcare Group to Executive Director of Arabian Healthcare Group — operations across 11 countries and 650+ healthcare professionals, built on JCI, TEMOS and ISO accreditation. Holds direct relationships across IHC, G42 and the UAE's sovereign health entities, and sits on the Chamber of Commerce Board.",
       metrics: [
         { label: "Countries Operated", val: "11" },
         { label: "Clinical Network", val: "650+" },
-        { label: "Governance", val: " Chamber" },
+        { label: "Governance", val: "Chamber Board" },
       ],
     },
     {
       id: "bidhann",
-      initials: "BC",
-      name: "Bidhann Chaudary",
+      name: "Bidhann Chowdhary",
       role: "Co-Founder",
+      image: "/images/founder_bidhann.jpg",
       highlights: "National Mandates & Presidential Programs",
       bio: "Built Medi Q into a hospital operator trusted with national-scale mandates — hospitals delivered under the UAE Presidential Program across five countries, the UAE's nationwide COVID-19 vaccination program, and a 200-bed, 50-ICU field hospital raised in nine days — before leading Medi Q to its exit to IHC (Tamouh Holding).",
       metrics: [
@@ -45,9 +45,9 @@ export default function LeadershipPage() {
     },
     {
       id: "abhinav",
-      initials: "AS",
       name: "Abhinav Sharma",
       role: "Co-Founder",
+      image: "/images/founder_abhinav.jpg",
       highlights: "14x Scale-Up & Margin Expansion",
       bio: "An IIM Ahmedabad alumnus who took a surgery platform from USD 6M to USD 84M — a 14x scale-up — while nearly quintupling profit margin, from 6% to 29%, and growing the network from 1 hospital to 13 across 7 specialties and 4 service lines.",
       metrics: [
@@ -103,17 +103,26 @@ export default function LeadershipPage() {
       <section className="py-6 px-6 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {founders.map((f) => (
-            <div key={f.id} className="p-8 rounded-xl bg-[#F4F4F4] border border-gray-200 flex flex-col justify-between">
+            <div key={f.id} className="p-6 rounded-xl bg-[#F4F4F4] border border-gray-200 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-white border border-gray-300 flex items-center justify-center text-lg font-bold text-[#171A20]">
-                    {f.initials}
-                  </div>
+                {/* Executive Portrait Photo */}
+                <div className="relative w-full h-80 rounded-lg overflow-hidden mb-5 bg-slate-200 border border-gray-300">
+                  <Image
+                    src={f.image}
+                    alt={f.name}
+                    fill
+                    className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    quality={95}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-semibold text-[#3E6AE1] uppercase tracking-wider">{f.role}</span>
                   <span className="text-xs text-[#5C5E62] font-medium">{f.highlights}</span>
                 </div>
 
                 <h3 className="text-2xl font-semibold text-[#171A20]">{f.name}</h3>
-                <div className="text-xs font-semibold text-[#3E6AE1] uppercase tracking-wider mt-1">{f.role}</div>
 
                 <p className="mt-4 text-sm text-[#393C41] leading-relaxed">{f.bio}</p>
               </div>
