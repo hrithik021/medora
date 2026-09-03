@@ -10,8 +10,7 @@ interface FloatingPillBarProps {
 
 export default function FloatingPillBar({ onOpenAssistant, onOpenSchedule }: FloatingPillBarProps) {
   const [promptIdx, setPromptIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   const prompts = [
     "What is MIHC?",
@@ -28,25 +27,30 @@ export default function FloatingPillBar({ onOpenAssistant, onOpenSchedule }: Flo
     return () => clearInterval(timer);
   }, [prompts.length]);
 
-  // Hide pill bar when scrolling down on mobile, show when scrolling up
+  // Hide pill bar on hero section (desktop & mobile); reveal only when scrolled past hero
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
-      if (currentY < 80) {
-        setVisible(true);
+      const heroThreshold = Math.max(300, window.innerHeight * 0.65);
+
+      if (currentY < heroThreshold) {
+        // While viewing hero section: completely hidden
+        setVisible(false);
       } else {
-        setVisible(currentY < lastScrollY);
+        // When scrolled down into the page: show
+        setVisible(true);
       }
-      setLastScrollY(currentY);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-30 pointer-events-none select-none transition-transform duration-300 ${
-        visible ? "translate-y-0" : "translate-y-full"
+      className={`fixed bottom-0 left-0 right-0 z-30 pointer-events-none select-none transition-all duration-300 ease-in-out ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
       {/* ══ MOBILE PILL BAR (< md) ══ */}
