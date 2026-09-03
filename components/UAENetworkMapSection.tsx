@@ -97,9 +97,9 @@ export default function UAENetworkMapSection({
           <span>Find Me</span>
         </div>
 
-        {/* Active Location Info Card Overlay on Map */}
+        {/* Desktop Active Location Info Card Overlay on Map (Hidden on mobile) */}
         {activePin && (
-          <div className="absolute bottom-5 left-5 right-5 sm:right-auto sm:max-w-xs bg-white/95 backdrop-blur-md rounded-lg p-4 shadow-xl border border-gray-200 text-xs animate-fade-in z-20">
+          <div className="hidden sm:block absolute bottom-5 left-5 max-w-xs bg-white/95 backdrop-blur-md rounded-lg p-4 shadow-xl border border-gray-200 text-xs animate-fade-in z-20">
             {locations.find((l) => l.id === activePin) && (
               <>
                 <div className="flex items-center space-x-1.5 text-red-600 font-semibold uppercase tracking-wider text-[10px]">
@@ -126,6 +126,35 @@ export default function UAENetworkMapSection({
           </div>
         )}
       </div>
+
+      {/* Mobile Active Location Info Card (Positioned cleanly below the map on mobile) */}
+      {activePin && (
+        <div className="sm:hidden mt-3 bg-white rounded-lg p-4 shadow-sm border border-gray-200 text-xs animate-fade-in">
+          {locations.find((l) => l.id === activePin) && (
+            <>
+              <div className="flex items-center space-x-1.5 text-red-600 font-semibold uppercase tracking-wider text-[10px]">
+                <span className="w-2 h-2 rounded-full bg-red-600 animate-ping" />
+                <span>Selected Network Center</span>
+              </div>
+              <h4 className="text-sm font-semibold text-[#171A20] mt-1">
+                {locations.find((l) => l.id === activePin)?.name}
+              </h4>
+              <p className="text-[#5C5E62] mt-1">
+                {locations.find((l) => l.id === activePin)?.role}
+              </p>
+              <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-[#171A20]">
+                {locations.find((l) => l.id === activePin)?.beds}
+              </div>
+              <button
+                onClick={onOpenSchedule}
+                className="mt-3 w-full h-9 rounded bg-[#171A20] text-white font-medium text-xs hover:bg-[#393C41] transition cursor-pointer"
+              >
+                Schedule Tour / Consult
+              </button>
+            </>
+          )}
+        </div>
+      )}
 
       {/* 2. Tesla-Style Lower Bar: Title & Big Metrics */}
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
