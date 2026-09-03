@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Navigation, Maximize2, MapPin, Building2, Stethoscope, ChevronRight } from "lucide-react";
+import { Navigation, MapPin, Building2, Stethoscope, ChevronRight } from "lucide-react";
 
 interface UAENetworkMapProps {
   onOpenSchedule: () => void;
@@ -91,24 +91,11 @@ export default function UAENetworkMapSection({
           );
         })}
 
-        {/* Floating Top-Left "Find Me" Button (Tesla exact match) */}
-        <button
-          onClick={() => setActivePin("dip")}
-          className="absolute top-5 left-5 h-9 px-3.5 rounded bg-white/90 hover:bg-white text-[#171A20] text-xs font-medium backdrop-blur-md shadow-md border border-gray-200 flex items-center gap-2 transition cursor-pointer z-20"
-        >
+        {/* Floating Top-Left "Find Me" Badge (Unclickable) */}
+        <div className="absolute top-5 left-5 h-9 px-3.5 rounded bg-white/90 text-[#171A20] text-xs font-medium backdrop-blur-md shadow-md border border-gray-200 flex items-center gap-2 pointer-events-none select-none z-20">
           <Navigation className="w-3.5 h-3.5 text-[#171A20]" />
           <span>Find Me</span>
-        </button>
-
-        {/* Floating Top-Right Expand Button (Tesla exact match) */}
-        <button
-          onClick={onOpenSchedule}
-          className="absolute top-5 right-5 w-9 h-9 rounded bg-white/90 hover:bg-white text-[#171A20] backdrop-blur-md shadow-md border border-gray-200 flex items-center justify-center transition cursor-pointer z-20"
-          title="Fullscreen Network"
-          aria-label="Expand Map"
-        >
-          <Maximize2 className="w-4 h-4" />
-        </button>
+        </div>
 
         {/* Active Location Info Card Overlay on Map */}
         {activePin && (
