@@ -163,9 +163,14 @@ export default function HeroSection({ onOpenSchedule, onOpenOSModal }: HeroSecti
           priority
           className="object-cover object-center"
           sizes="100vw"
-          quality={95}
+          quality={100}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/50 z-10 pointer-events-none" />
+        {/* Dynamic desktop gradient: bottom-heavy when text is at bottom so building is crystal clear */}
+        {desktopSlide.textPosition === "bottom" ? (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 via-35% to-transparent z-10 pointer-events-none" />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/50 z-10 pointer-events-none" />
+        )}
       </div>
 
       {/* ══════════════════════════════════════════
